@@ -4,7 +4,6 @@ al comparar tipos de datos primitivos, el operaor e comparacion == compara solo 
 var x = 4,
     y = '4'
 
-
 /*
 al comparar objetos es difereten, porque lo que se compara es si los objetos a evaluar apuntan a la misma ireccion de memoria y no la estructura.
 */
