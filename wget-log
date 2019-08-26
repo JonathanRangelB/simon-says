@@ -1,0 +1,5 @@
+--2019-08-26 16:59:54--  https://update.code.visualstudio.com/commit:f06011ac164ae4dc8e753a3fe7f9549844d15e35/server-linux-x64/stable
+Resolving update.code.visualstudio.com (update.code.visualstudio.com)... 104.42.78.153
+Connecting to update.code.visualstudio.com (update.code.visualstudio.com)|104.42.78.153|:443... connected.
+ERROR: The certificate of ‘update.code.visualstudio.com’ is not trusted.
+ERROR: The certificate of ‘update.code.visualstudio.com’ hasn't got a known issuer.

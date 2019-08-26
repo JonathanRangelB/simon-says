@@ -6,12 +6,6 @@ function obtenerPersonaje(id, callback) {
     console.log(id)
     const url = `${API_URL}${PEOPLE_URL.replace(':id',id)}`
     $.get(url, opts, callback)
-        .fail(function() {
-            console.log(`no se pudo obtener el valor del personaje`)
-        })
-        .catch(function() {
-            console.log(`seccion el catch`)
-        })
 }
 
 //al ejecutar esta funcion, no ejecutaremos la siguiente sino hasta qu la primera haya sido ejecutada satisfactoriamente, esto se puede anidar hasta el infinito y se le conoce como el "Callback Hell", y en la siguiente clase veremos como solucionar esto
