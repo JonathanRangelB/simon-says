@@ -83,6 +83,10 @@
         .hide {
             display: none;
         }
+        
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+        }
     </style>
 </head>
 
@@ -93,18 +97,20 @@
         <div id="violeta" class="color violeta right" data-color="violeta"></div>
         <div id="naranja" class="color naranja left" data-color="naranja"></div>
         <div id="verde" class="color verde right" data-color="verde"></div>
-        <button id="btnEmpezar" class="btn-start" onclick="empezarJuego()">Empezar a jugar!</button>
+        <button id="btnEmpezar" class="btn-start" onclick="empezarJuego()">Comenzar a jugar!</button>
     </div>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
         const celeste = document.getElementById('celeste')
         const violeta = document.getElementById('violeta')
         const naranja = document.getElementById('naranja')
         const verde = document.getElementById('verde')
         const btnEmpezar = document.getElementById('btnEmpezar')
-        const ULTIMO_NIVEL = 10
+        const ULTIMO_NIVEL = 7
 
         class Juego {
             constructor() {
+                this.inicializar = this.inicializar.bind(this)
                 this.inicializar()
                 this.generarSecuencia()
                 setTimeout(this.siguienteNivel, 500);
@@ -113,7 +119,7 @@
             inicializar() {
                 this.elegirColor = this.elegirColor.bind(this)
                 this.siguienteNivel = this.siguienteNivel.bind(this)
-                btnEmpezar.classList.add('hide')
+                this.toggleBtnInicializar()
                 this.nivel = 1
                 this.colores = {
                     celeste,
@@ -121,6 +127,15 @@
                     naranja,
                     verde
                 }
+            }
+
+            toggleBtnInicializar() {
+                if (btnEmpezar.classList.contains('hide')) {
+                    btnEmpezar.classList.remove('hide')
+                } else {
+                    btnEmpezar.classList.add('hide')
+                }
+
             }
 
             generarSecuencia() {
@@ -207,14 +222,27 @@
                             this.nivel++
                                 this.eliminarEventosClic()
                             if (this.nivel === (ULTIMO_NIVEL + 1)) {
-                                //GANO
+                                this.ganoElJuego()
                             } else {
                                 setTimeout(this.siguienteNivel, 1500)
                             }
                         }
                 } else {
-                    console.log('Has perdido')
+                    this.perdioElJuego()
                 }
+            }
+
+            ganoElJuego() {
+                swal('Ganaste!', 'Feliciades, has completado el juego 😎', 'success')
+                    .then(this.inicializar)
+            }
+
+            perdioElJuego() {
+                swal('Perdiste', 'Lo lamento 😫', 'error')
+                    .then(() => {
+                        this.eliminarEventosClic()
+                        this.inicializar()
+                    })
             }
         }
 
