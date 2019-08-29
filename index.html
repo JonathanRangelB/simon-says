@@ -110,7 +110,7 @@
 
             inicializar() {
                 btnEmpezar.classList.add('hide')
-                this.nivel = 1
+                this.nivel = 7
                 this.colores = {
                     celeste,
                     violeta,
@@ -125,6 +125,7 @@
 
             siguienteNivel() {
                 this.iluminarSecuencia()
+                this.agregarEventoClick()
             }
 
             transformarNumeroAColor(numero) {
@@ -158,6 +159,17 @@
 
             apagarColor(color) {
                 this.colores[color].classList.remove('light')
+            }
+
+            agregarEventoClick() {
+                this.colores.celeste.addEventListener('click', this.elegirColor)
+                this.colores.verde.addEventListener('click', this.elegirColor)
+                this.colores.violeta.addEventListener('click', this.elegirColor)
+                this.colores.naranja.addEventListener('click', this.elegirColor)
+            }
+
+            elegirColor(ev) {
+                console.log(ev)
             }
         }
 
