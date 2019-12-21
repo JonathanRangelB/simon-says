@@ -1,5 +1,5 @@
 # simon-says
-Little game of simon says
+Little game of simon say´s
 
 ![](https://i.imgur.com/sjCOjTC.png)
 
